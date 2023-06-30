@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qRh8lBZ6qX+w4rKQiOTCMSdRvITEIMu9Z3Z5wz+kRvo24+NA00exvEYFI3cRefLILPa4z3pn75Bcyol7yqKEfw==",
+  "dgSpecHash": "u38cWBNwZoJBOh3Nqc2Z8sZKfJ2y24MFyc68494Ss4z1gk90HSOVcmfzUvVCZV/75dR0UgkbUHFH2eHp8vXKYw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\javie\\source\\repos\\LaloSuperCars\\LaloSuperCars\\LaloSuperCars.csproj",
+  "projectFilePath": "C:\\Users\\javie\\OneDrive\\Escritorio\\LaloSuperCar\\LaloSuperCars\\LaloSuperCars.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\javie\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\javie\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

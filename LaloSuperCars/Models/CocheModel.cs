@@ -12,9 +12,6 @@ namespace LaloSuperCars.Models
         [Column("id_coche")]
         public int Id { get; set; }
 
-        [Column("id_concesionario")]
-        public int IdConcesionario { get; set; }
-
         [Column("matricula")]
         public string Matricula { get; set; }
 
@@ -28,7 +25,10 @@ namespace LaloSuperCars.Models
         public string Color { get; set; }
 
         [Column("precio")]
-        public double Precio { get; set; }
+        public decimal Precio { get; set; }
+
+        [Column("id_concesionario")]
+        public int IdConcesionario { get; set; }
 
         [Column("id_categoria")]
         public int IdCategoria { get; set; }

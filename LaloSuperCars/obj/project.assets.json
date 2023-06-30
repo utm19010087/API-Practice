@@ -4366,11 +4366,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\javie\\source\\repos\\LaloSuperCars\\LaloSuperCars\\LaloSuperCars.csproj",
+      "projectUniqueName": "C:\\Users\\javie\\OneDrive\\Escritorio\\LaloSuperCar\\LaloSuperCars\\LaloSuperCars.csproj",
       "projectName": "LaloSuperCars",
-      "projectPath": "C:\\Users\\javie\\source\\repos\\LaloSuperCars\\LaloSuperCars\\LaloSuperCars.csproj",
+      "projectPath": "C:\\Users\\javie\\OneDrive\\Escritorio\\LaloSuperCar\\LaloSuperCars\\LaloSuperCars.csproj",
       "packagesPath": "C:\\Users\\javie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\javie\\source\\repos\\LaloSuperCars\\LaloSuperCars\\obj\\",
+      "outputPath": "C:\\Users\\javie\\OneDrive\\Escritorio\\LaloSuperCar\\LaloSuperCars\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\javie\\AppData\\Roaming\\NuGet\\NuGet.Config",

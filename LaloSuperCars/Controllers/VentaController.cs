@@ -5,34 +5,34 @@ namespace LaloSuperCars.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CategoriaCoche : Controller
+    public class VentaController : Controller
     {
         private ModelContext db;
 
-        public CategoriaCoche(ModelContext database)
+        public VentaController(ModelContext database)
         {
             this.db = database;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<CategoriaCocheModel>> Get()
+        public ActionResult<IEnumerable<VentaModel>> Get()
         {
-            return Ok(db.categoriaCocheModel.ToList());
+            return Ok(db.ventaModel.ToList());
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] CategoriaCocheModel json)
+        public ActionResult Post([FromBody] VentaModel json)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Informacion invalida");
             }
-            db.categoriaCocheModel.Add(json);
+            db.ventaModel.Add(json);
             db.SaveChanges();
             return Ok();
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{id_venta}")]
         public async Task<ActionResult> Find(int? id)
         {
             if (id == null)
@@ -41,7 +41,7 @@ namespace LaloSuperCars.Controllers
             }
             try
             {
-                var item = await db.categoriaCocheModel.FindAsync(id);
+                var item = await db.ventaModel.FindAsync(id);
                 if (item == null)
                 {
                     return NotFound();
@@ -55,13 +55,13 @@ namespace LaloSuperCars.Controllers
         }
 
         [HttpPut]
-        public ActionResult put([FromBody] CategoriaCocheModel json)
+        public ActionResult put([FromBody] VentaModel json)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Informacion invalida");
             }
-            var dbjson = db.categoriaCocheModel.Where(a => a.Id == json.Id).FirstOrDefault();
+            var dbjson = db.ventaModel.Where(a => a.Id == json.Id).FirstOrDefault();
             if (dbjson == null)
             {
                 return BadRequest($"proveedor con id json.id no fue encontrado");
@@ -73,14 +73,14 @@ namespace LaloSuperCars.Controllers
         }
 
         [HttpDelete]
-        [Route("{Id}")]
+        [Route("{id_venta}")]
         public ActionResult Delete(int? id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Informacion invalida");
             }
-            var dbjson = db.categoriaCocheModel.Where(a => a.Id == id).FirstOrDefault();
+            var dbjson = db.ventaModel.Where(a => a.Id == id).FirstOrDefault();
             if (dbjson == null)
             {
                 return BadRequest($"Provedor con id.int no fue encontradp");
@@ -89,5 +89,5 @@ namespace LaloSuperCars.Controllers
             db.SaveChanges();
             return Ok();
         }
-    }       
+    }
 }

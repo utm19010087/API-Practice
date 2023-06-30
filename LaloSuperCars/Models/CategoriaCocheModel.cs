@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LaloSuperCars.Models
 {
-    [Table("categoriacoche")]
+    [Table("categoria")]
     public class CategoriaCocheModel
     {
         [Key]

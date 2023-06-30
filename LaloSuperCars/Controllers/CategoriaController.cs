@@ -1,38 +1,41 @@
 ﻿using LaloSuperCars.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System;
 namespace LaloSuperCars.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class Concesionario : Controller
+    public class CategoriaController : Controller
     {
         private ModelContext db;
 
-        public Concesionario(ModelContext database)
+        public CategoriaController(ModelContext database)
         {
             this.db = database;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<ConcesionarioModel>> Get()
+        public ActionResult<IEnumerable<CategoriaCocheModel>> Get()
         {
-            return Ok(db.concesionarioModel.ToList());
+            return Ok(db.categoriaCocheModel.ToList());
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] ConcesionarioModel json)
+        public ActionResult Post([FromBody] CategoriaCocheModel json)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Informacion invalida");
             }
-            db.concesionarioModel.Add(json);
+            db.categoriaCocheModel.Add(json);
             db.SaveChanges();
             return Ok();
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{id_categoria}")]
         public async Task<ActionResult> Find(int? id)
         {
             if (id == null)
@@ -41,7 +44,7 @@ namespace LaloSuperCars.Controllers
             }
             try
             {
-                var item = await db.concesionarioModel.FindAsync(id);
+                var item = await db.categoriaCocheModel.FindAsync(id);
                 if (item == null)
                 {
                     return NotFound();
@@ -55,13 +58,13 @@ namespace LaloSuperCars.Controllers
         }
 
         [HttpPut]
-        public ActionResult put([FromBody] ConcesionarioModel json)
+        public ActionResult put([FromBody] CategoriaCocheModel json)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Informacion invalida");
             }
-            var dbjson = db.concesionarioModel.Where(a => a.Id == json.Id).FirstOrDefault();
+            var dbjson = db.categoriaCocheModel.Where(a => a.Id == json.Id).FirstOrDefault();
             if (dbjson == null)
             {
                 return BadRequest($"proveedor con id json.id no fue encontrado");
@@ -73,14 +76,14 @@ namespace LaloSuperCars.Controllers
         }
 
         [HttpDelete]
-        [Route("{Id}")]
+        [Route("{id_categoria}")]
         public ActionResult Delete(int? id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Informacion invalida");
             }
-            var dbjson = db.concesionarioModel.Where(a => a.Id == id).FirstOrDefault();
+            var dbjson = db.categoriaCocheModel.Where(a => a.Id == id).FirstOrDefault();
             if (dbjson == null)
             {
                 return BadRequest($"Provedor con id.int no fue encontradp");
@@ -89,5 +92,5 @@ namespace LaloSuperCars.Controllers
             db.SaveChanges();
             return Ok();
         }
-    }
+    }       
 }

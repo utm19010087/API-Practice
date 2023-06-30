@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LaloSuperCars.Models
 {
-    [Table("Detalle_Revision")]
+    [Table("detalle_revision")]
     public class Detalle_RevisionModel
     {
 
@@ -13,13 +13,13 @@ namespace LaloSuperCars.Models
         [Column("id_detalle_revision")]
         public int Id_detalle_revision { get; set; }
 
-        [Column("id_revisiones")]
+        [Column("id_revision")]
         public int IdRevisiones { get; set; }
 
         [Column("nombre")]
         public string Nombre { get; set; }
 
         [Column("costo")]
-        public double Costo { get; set; }
+        public decimal Costo { get; set; }
     }
 }

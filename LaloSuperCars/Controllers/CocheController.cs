@@ -1,38 +1,42 @@
 ﻿using LaloSuperCars.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System;
 
 namespace LaloSuperCars.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class Detalle_Revision : Controller
+    public class CocheController : Controller
     {
         private ModelContext db;
 
-        public Detalle_Revision(ModelContext database)
+        public CocheController(ModelContext database)
         {
             this.db = database;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Detalle_RevisionModel>> Get()
+        public ActionResult<IEnumerable<CocheModel>> Get()
         {
-            return Ok(db.detalleRevisionModel.ToList());
+            return Ok(db.cocheModel.ToList());
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] Detalle_RevisionModel json)
+        public ActionResult Post([FromBody] CocheModel json)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Informacion invalida");
             }
-            db.detalleRevisionModel.Add(json);
+            db.cocheModel.Add(json);
             db.SaveChanges();
             return Ok();
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{id_coche}")]
         public async Task<ActionResult> Find(int? id)
         {
             if (id == null)
@@ -41,7 +45,7 @@ namespace LaloSuperCars.Controllers
             }
             try
             {
-                var item = await db.detalleRevisionModel.FindAsync(id);
+                var item = await db.cocheModel.FindAsync(id);
                 if (item == null)
                 {
                     return NotFound();
@@ -55,13 +59,13 @@ namespace LaloSuperCars.Controllers
         }
 
         [HttpPut]
-        public ActionResult put([FromBody] Detalle_RevisionModel json)
+        public ActionResult put([FromBody] CategoriaCocheModel json)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Informacion invalida");
             }
-            var dbjson = db.detalleRevisionModel.Where(a => a.Id_detalle_revision == json.Id_detalle_revision).FirstOrDefault();
+            var dbjson = db.cocheModel.Where(a => a.Id == json.Id).FirstOrDefault();
             if (dbjson == null)
             {
                 return BadRequest($"proveedor con id json.id no fue encontrado");
@@ -73,14 +77,14 @@ namespace LaloSuperCars.Controllers
         }
 
         [HttpDelete]
-        [Route("{Id}")]
+        [Route("{id_coche}")]
         public ActionResult Delete(int? id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Informacion invalida");
             }
-            var dbjson = db.detalleRevisionModel.Where(a => a.Id_detalle_revision == id).FirstOrDefault();
+            var dbjson = db.cocheModel.Where(a => a.Id == id).FirstOrDefault();
             if (dbjson == null)
             {
                 return BadRequest($"Provedor con id.int no fue encontradp");

@@ -3,22 +3,22 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LaloSuperCars.Models
 {
-    [Table("concesionario")]
-    public class ConcesionarioModel
+    [Table("contacto")]
+    public class ContactoModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        [Column("id_concesionario")]
+        [Column("id_contacto")]
         public int Id { get; set; }
-
-        [Column("id_proveedor")]
-        public int IdProveedor { get; set; }
-
-        [Column("nombre")]
-        public string Nombre { get; set; }
 
         [Column("telefono")]
         public string Telefono { get; set; }
+
+        [Column("mail")]
+        public string Mail { get; set; }
+
+        [Column("id_cliente")]
+        public int IdContacto { get; set; }
     }
 }

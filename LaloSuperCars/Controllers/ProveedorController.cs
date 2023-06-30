@@ -1,68 +1,72 @@
 ﻿using LaloSuperCars.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System;
 namespace LaloSuperCars.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class Empleado : Controller
+
+    public class ProveedorController : Controller
     {
         private ModelContext db;
 
-        public Empleado(ModelContext database)
+        public ProveedorController(ModelContext database) 
         {
             this.db = database;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<EmpleadoModel>> Get()
+        public ActionResult<IEnumerable<ProveedorModel>> Get() 
         {
-            return Ok(db.empleadoModel.ToList());
+            return Ok(db.proveedorModel.ToList());
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] EmpleadoModel json)
+        public ActionResult Post([FromBody]ProveedorModel json) 
         {
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
                 return BadRequest("Informacion invalida");
             }
-            db.empleadoModel.Add(json);
+            db.proveedorModel.Add(json);
             db.SaveChanges();
             return Ok();
         }
 
-        [HttpGet("{Id}")]
-        public async Task<ActionResult> Find(int? id)
+        [HttpGet("{id_proveedor}")]
+        public async Task<ActionResult> Find(int? id) 
         {
-            if (id == null)
+            if(id == null)
             {
                 return BadRequest("No existe");
             }
             try
             {
-                var item = await db.empleadoModel.FindAsync(id);
-                if (item == null)
+                var item = await db.proveedorModel.FindAsync(id);
+                if(item==null)
                 {
                     return NotFound();
                 }
                 return Ok(item);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return StatusCode(500, ex);
             }
         }
 
         [HttpPut]
-        public ActionResult put([FromBody] EmpleadoModel json)
+        public ActionResult put([FromBody]ProveedorModel json)
         {
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
                 return BadRequest("Informacion invalida");
             }
-            var dbjson = db.empleadoModel.Where(a => a.Id == json.Id).FirstOrDefault();
-            if (dbjson == null)
+            var dbjson = db.proveedorModel.Where(a => a.Id == json.Id).FirstOrDefault();
+            if(dbjson == null)
             {
                 return BadRequest($"proveedor con id json.id no fue encontrado");
             }
@@ -73,15 +77,15 @@ namespace LaloSuperCars.Controllers
         }
 
         [HttpDelete]
-        [Route("{Id}")]
+        [Route("{id_proveedor}")]
         public ActionResult Delete(int? id)
         {
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
                 return BadRequest("Informacion invalida");
             }
-            var dbjson = db.empleadoModel.Where(a => a.Id == id).FirstOrDefault();
-            if (dbjson == null)
+            var dbjson = db.proveedorModel.Where(a => a.Id == id).FirstOrDefault();
+            if(dbjson == null)
             {
                 return BadRequest($"Provedor con id.int no fue encontradp");
             }

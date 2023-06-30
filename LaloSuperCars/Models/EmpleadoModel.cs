@@ -17,9 +17,9 @@ namespace LaloSuperCars.Models
         public string Nombre { get; set; }
 
         [Column("fecha_nacimiento")]
-        public String fechaNacimiento { get; set; }
+        public DateTime fechaNacimiento { get; set; }
 
         [Column("sexo")]
-        public char sexo { get; set; }
+        public string sexo { get; set; }
     }
 }

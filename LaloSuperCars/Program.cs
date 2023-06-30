@@ -1,6 +1,6 @@
 using LaloSuperCars.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;  //probar
 
 var myCorsPolicy = "MyCorsPolicy";
 var builder = WebApplication.CreateBuilder(args);
