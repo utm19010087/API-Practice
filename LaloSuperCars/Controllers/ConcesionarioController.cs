@@ -35,7 +35,7 @@ namespace LaloSuperCars.Controllers
             return Ok();
         }
 
-        [HttpGet("{id_concesionario}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult> Find(int? id)
         {
             if (id == null)
@@ -76,7 +76,7 @@ namespace LaloSuperCars.Controllers
         }
 
         [HttpDelete]
-        [Route("{id_concesionario}")]
+        [Route("{id}")]
         public ActionResult Delete(int? id)
         {
             if (!ModelState.IsValid)

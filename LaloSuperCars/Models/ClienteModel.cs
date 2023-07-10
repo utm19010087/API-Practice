@@ -25,6 +25,6 @@ namespace LaloSuperCars.Models
         public string Usuario { get; set; }
 
         [Column("contraseña")]
-        public int Contraseña { get; set; }
+        public string Contraseña { get; set; }
     }
 }

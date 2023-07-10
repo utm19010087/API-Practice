@@ -32,7 +32,7 @@ namespace LaloSuperCars.Controllers
             return Ok();
         }
 
-        [HttpGet("{id_cliente}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult> Find(int? id)
         {
             if (id == null)
@@ -55,7 +55,7 @@ namespace LaloSuperCars.Controllers
         }
 
         [HttpPut]
-        public ActionResult put([FromBody] CategoriaCocheModel json)
+        public ActionResult put([FromBody] ClienteModel json)
         {
             if (!ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace LaloSuperCars.Controllers
         }
 
         [HttpDelete]
-        [Route("{id_cliente}")]
+        [Route("{id}")]
         public ActionResult Delete(int? id)
         {
             if (!ModelState.IsValid)
